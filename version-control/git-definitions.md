@@ -14,3 +14,4 @@ A merge conflict occurs when your current branch (the one you would like to merg
 
 Hi Tyler, this is my second submission on 6/22 at 11:43 AM CST
 is THIS ONE right?!
+FINAL EDIT
