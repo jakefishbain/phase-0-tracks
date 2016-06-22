@@ -12,4 +12,4 @@ A commit submits a file or folder change to the working repo.
 A merge conflict occurs when your current branch (the one you would like to merge) and the current branch on GitHub have disagreeing changes.
 
 
-HI TYLER!!!
+Hi Tyler, this is my second submission on 6/22 at 11:43 AM CST
