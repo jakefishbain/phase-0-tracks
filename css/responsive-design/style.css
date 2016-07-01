@@ -3,30 +3,66 @@ blockquote {
   padding: 15px;
   margin-left: 0px;
 }
-
+body {
+  max-width: 960px;
+  text-align:center;
+  width:900px;
+  margin:0 auto;
+}
 cite {
   display: block;
+/*  position: fixed;*/
   margin-top: 10px;
 }
-
+main {
+    display: inline-block;
+    vertical-align: text-top;
+    width: 75%;
+    float: right;
+}
+#external-links {
+    display: inline-block;
+    vertical-align: text-top;
+    width: 20%;
+    float: left;
+    padding-top: 2%;
+}
 #external-links ul {
   list-style-type: none;
   padding-left: 0px;
 }
-
+​
 /* you're welcome to edit the
 image, figure, and figcaption CSS if you'd like, 
 but it's optional! */
 img {
   width: 100%;
 }
-
+​
 figure {
   margin-left: 0px;
   margin-right: 0px;
 }
-
+​
 figcaption {
   font-style: italic;
   text-align: right;
+}
+​
+@media screen and (max-width:500px){
+   main h1{
+    font-family:"Avenir";
+    font-size:35px;
+    margin-left:37px;
+  }
+}
+​
+@media screen and (min-width:700px){
+   .moving{
+    float:right;
+    width:20%;
+    font-size: 500em;
+    font-family:"Avenir";
+    display:inline-block;
+  }
 }
