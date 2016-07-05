@@ -1,12 +1,16 @@
+-Walk up to the elevator moving your legs forward in an alternating pattern
 -Upon approaching the elevator and determining the desired floor:
-	-If the desired floor is higher than your current floor:
-		-press the up (^) button 
-	-If the desired floor is lower than your current floor:
-		-press the down button 
-	-Wait for the elevator to reach your floor, and enter when the doors open.  
--Upon entering, press the numbered button that corresponds with the floor number you would like to visit. The door will close on its own
-	-If you need to hold the door:
+	-Lift you arm and use one finger to:
+		-If the desired floor is higher than your current floor:
+			-press the up (^) button 
+		-If the desired floor is lower than your current floor:
+			-press the down button 
+-Wait for the elevator to reach your floor and open, then enter using the same alternating leg pattern.
+-Upon entering, turn and face the panel with numbers and lift your arm and use one finger to press the numbered button that corresponds with the floor number you would like to visit. The door will close on its own.
+	-If you need to hold the door use the same arm motions to:
 		-press and hold the 'door open' button
-	-If you are in a hurry and would like the door to close more quickly:
+		-then continue to follow the steps on line 9
+	-If you are in a hurry and would like the door to close more quickly use the same arm motions to:
 		-press the 'door close' button
--When you reach your desired floor, the doors will open and you may exit to continue your day!
+		-then continue to follow the steps on line 9
+-When you've reach your desired floor, the doors will automatically open and you may alternate legs to walk and exit to continue your day!
