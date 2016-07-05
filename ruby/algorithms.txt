@@ -1,0 +1,12 @@
+-Upon approaching the elevator and determining the desired floor:
+	-If the desired floor is higher than your current floor:
+		-press the up (^) button 
+	-If the desired floor is lower than your current floor:
+		-press the down button 
+	-Wait for the elevator to reach your floor, and enter when the doors open.  
+-Upon entering, press the numbered button that corresponds with the floor number you would like to visit. The door will close on its own
+	-If you need to hold the door:
+		-press and hold the 'door open' button
+	-If you are in a hurry and would like the door to close more quickly:
+		-press the 'door close' button
+-When you reach your desired floor, the doors will open and you may exit to continue your day!
