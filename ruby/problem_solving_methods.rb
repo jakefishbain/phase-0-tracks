@@ -72,7 +72,7 @@ def bubble_sort(array)
         swapped = true
       # else 
       #   swapped = false
-      #Why doesn't this work without line 68?
+      #Why doesn't this work without line 68???
       end
     end
   end
