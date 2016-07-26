@@ -1,4 +1,7 @@
 class Santa
+  
+  attr_reader :gender
+  attr_accessor :age, :ethnicity
 
   #INTIALIZE METHOD
   def initialize(human_name, gender, ethnicity)
@@ -6,21 +9,7 @@ class Santa
     @gender = gender
     @ethnicity = ethnicity
     @reindeer_ranking = ["Rudolph", "Dasher","Dancer", "Prancer", "Vixen", "Comet", "Cupid","Donner", "Blitzen"]
-    @age = 0  
-  end
-
-  #GETTER METHOD
-  def gender
-    @gender  
-  end
-
-  #SETTER METHODS
-  def age=(new_age)
-    @age = new_age
-  end
-
-  def ethnicity=(new_ethnicity)
-    @ethnicity = new_ethnicity
+    @age = rand(0..140)  
   end
 
   #INSTANCE METHODS
@@ -50,6 +39,7 @@ class Santa
     puts "Gender: #{@gender}"
     puts "Ethnicity: #{@ethnicity}"
     puts "Age: #{@age}"
+    puts "---"
   end
 
 end
@@ -76,16 +66,16 @@ end
 #   puts santa.about
 # end
 
-puts "---"
-chris = Santa.new("Jake", "Male", "White")
-# chris.about
-# chris.celebrate_birthday
-# chris.about
-puts "---"
-chris.get_mad_at("dasher")
-puts chris.gender
-chris.age = 3
-chris.about
+santas = []
+example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+example_names = ["Jake", "John", "Sally", "Alex", "Brad", "Jessie", "Emma"]
+
+10.times {santas << Santa.new(example_names.sample, example_genders.sample, example_ethnicities.sample) }
+
+santas.each do |santa|
+  santa.about
+end
 
 
 
