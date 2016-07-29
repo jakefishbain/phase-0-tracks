@@ -7,19 +7,10 @@ describe WordGame do
     expect(wordgame.word_split).to eq ["d","o","g"]
   end
 
-  it "allows a letter guess and fills in the blanks" do
+  it "inputs letter into a blank array" do
     wordgame.word_split
-    expect(wordgame.guess_letter("d")).to eq ["d","_","_"]
-  end
-
-  it "doesn't allow more guesses than letters" do
-    wordgame.word_split
-    wordgame.guess_letter("d")
-    wordgame.guess_letter("o")
-    wordgame.guess_letter("g")
-    expect(wordgame.guess_letter("f")).to eq "You're an absolute loser! The answer was dog"
+    expect(wordgame.input_letter("d")).to eq ["d","_","_"]
   end
 
   
-
 end
