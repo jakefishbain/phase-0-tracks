@@ -13,7 +13,9 @@ describe WordGame do
   end
 
   # it "doesn't allow more guesses than letters" do
-  #   expect(wordgame.guess_number).should < 3 
+  #   wordgame.word_split
+  #   wordgame.guess_letter("d")
+  #   expect(wordgame.guess_number).to eq "Keep trying" 
   # end
 
 end
