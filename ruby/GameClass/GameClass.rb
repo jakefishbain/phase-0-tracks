@@ -12,22 +12,11 @@ class WordGame
   end
 
   def word_split
-    #@word_arr = @word.split('')
     @word_length = word_arr.length
     @word_length.times do
       @blank_arr << "_"
     end
-    #print blank_arr
     return @word_arr
-  end
-
-
-  def guess_number
-    if @guess_count > @guessed_letters.length
-      puts "You're an absolute loser!"
-    else
-      puts "Keep trying!"
-    end
   end
 
 
@@ -36,11 +25,18 @@ class WordGame
       @guessed_letters << letter
       @guess_count += 1
     end
-    if @word_arr.include?(letter)
-      @blank_arr[@word_arr.index(letter)] = letter
+
+    if @guess_count > @word_length
+      "You're an absolute loser! The answer was #{@word}"
+    else
       print @blank_arr
+      puts " Keep trying!"
+        if @word_arr.include?(letter)
+          @blank_arr[@word_arr.index(letter)] = letter
+          print @blank_arr
+          return blank_arr
+        end
     end
-    return blank_arr
   end
 
 end
@@ -51,3 +47,6 @@ end
 # dog.guess_letter("d")
 # dog.guess_letter("o")
 # dog.guess_letter("y")
+# dog.guess_letter("y")
+# dog.guess_letter("s")
+

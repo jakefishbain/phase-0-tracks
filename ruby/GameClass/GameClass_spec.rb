@@ -12,10 +12,14 @@ describe WordGame do
     expect(wordgame.guess_letter("d")).to eq ["d","_","_"]
   end
 
-  # it "doesn't allow more guesses than letters" do
-  #   wordgame.word_split
-  #   wordgame.guess_letter("d")
-  #   expect(wordgame.guess_number).to eq "Keep trying" 
-  # end
+  it "doesn't allow more guesses than letters" do
+    wordgame.word_split
+    wordgame.guess_letter("d")
+    wordgame.guess_letter("o")
+    wordgame.guess_letter("g")
+    expect(wordgame.guess_letter("f")).to eq "You're an absolute loser! The answer was dog"
+  end
+
+  
 
 end
