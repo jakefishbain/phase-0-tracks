@@ -23,6 +23,8 @@ class WordGame
        @blank_arr[@word_arr.index(letter)] = letter
        print @blank_arr
        return @blank_arr
+    else 
+      print @blank_arr
     end
   end
   
@@ -36,9 +38,11 @@ class WordGame
     end
 
     if @guess_count > @word_length
-       puts " You're an absolute loser! The answer was #{@word}"
+      puts " You're an absolute loser! The answer was #{@word}"
+      " You're an absolute loser! The answer was #{@word}"
     elsif @blank_arr.join == @word
       puts " Good job, you got it!"
+      " Good job, you got it!"
     else
       puts " Keep trying!"
     end
@@ -47,7 +51,7 @@ end
 
 
 
-dog = WordGame.new("doog")
+dog = WordGame.new("dog")
 
 dog.word_split
 dog.guess_letter("d")

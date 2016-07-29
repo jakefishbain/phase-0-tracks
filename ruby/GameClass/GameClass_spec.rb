@@ -12,5 +12,13 @@ describe WordGame do
     expect(wordgame.input_letter("d")).to eq ["d","_","_"]
   end
 
-  
+  it "outputs error with too many guesses" do
+    wordgame.input_letter("f")
+    wordgame.input_letter("h")
+    wordgame.input_letter("a")
+    #wordgame.input_letter("p")
+    expect(wordgame.guess_letter("p")).to eq " You're an absolute loser! The answer was dog"
+  end
+
+
 end
