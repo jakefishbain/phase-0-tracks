@@ -9,10 +9,10 @@ function LongSort(original) {
 
   
   this.longest = function longest(hash) {
+  var highest = '';
     for (var key in hash){
-      var highest = '';
       if (hash[key] > highest.length) {
-        highest = key;
+      highest = key;
       };
     }return highest
   };
@@ -27,6 +27,6 @@ function LongSort(original) {
 
 }
 
-var sortGame = new LongSort(['dog','lamp','toast']);
+var sortGame = new LongSort(['dog','lamp','toast','cat', 'otomotopia']);
 var countedList = sortGame.phraseLength();
 console.log(sortGame.longest(countedList))
