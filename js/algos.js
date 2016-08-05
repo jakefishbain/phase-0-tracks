@@ -2,13 +2,31 @@
 //iterate original array into new data structure with key/value pairs for "phrase" and "length"
 //sort new array and/or pull out key/value pair with largest length and print to console
 
-var sorted = {};
+function LongSort(original) {
+  this.original = original;
 
-function longest(arr) {
-  for (var i = 0; i < arr.length; i++){
-    sorted[arr[i]] = arr[i].length;
-  }};
+  var sorted = {};
 
-longest(['eee', 'eeee', 'eeeee']);
-console.log(sorted);
+  
+  this.longest = function longest(hash) {
+    for (var key in hash){
+      var highest = '';
+      if (hash[key] > highest.length) {
+        highest = key;
+      };
+    }return highest
+  };
+  
+  this.phraseLength = function phraseLength() {
+    for (var i = 0; i < original.length; i++){
+      sorted[original[i]] = original[i].length;
+        };
+      //console.log(sorted)
+      return sorted
+      };
 
+}
+
+var sortGame = new LongSort(['dog','lamp','toast']);
+var countedList = sortGame.phraseLength();
+console.log(sortGame.longest(countedList))
