@@ -95,6 +95,34 @@ profileAdder({nam: "Steven", ag: 24}, {name: "Tamir", age: 54}) //false (no e in
 
 
 
+//RELEASE 3
+function length(num){
+  var alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  var wordArray = [];
+
+  for (var i = 0; i < num; i++) {
+    var wordString = '';
+    for (var j = 0; j <= Math.floor(Math.random()*10); j++){
+      wordString += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+    }
+    wordArray.push(wordString);
+  }
+  return wordArray;
+}
+
+//console.log(length(6))
+
+for (var i = 0; i < 10; i++){
+  var lengthVar = length(7)
+  var var1 = new LongSort(lengthVar);
+  var var2 = var1.phraseLength();
+  console.log(lengthVar)
+  console.log(var1.longest(var2))
+}
+
+
+
+
 
 
 
