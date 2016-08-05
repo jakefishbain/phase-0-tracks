@@ -32,40 +32,65 @@ var countedList = sortGame.phraseLength();
 console.log(sortGame.longest(countedList))
 
 
-//RELEASE 1
+// //RELEASE 1
 
-var profile1 = {};
-function pair1(name, age){
-  profile1.name = name;
-  profile1.age = age;
-  return profile1
-};
+// var profile1 = {};
+// function pair1(name, age){
+//   profile1.name = name;
+//   profile1.age = age;
+//   return profile1
+// };
 
-var profile2 = {};
-function pair2(name, age){
-  profile2.name = name;
-  profile2.age = age;
-  return profile2
-};
-
-
-console.log(pair1('Jake', 25));
-console.log(pair2('Brad', 22))
-//console.log(profile1.name)
+// var profile2 = {};
+// function pair2(name, age){
+//   profile2.name = name;
+//   profile2.age = age;
+//   return profile2
+// };
 
 
-if (profile1.name == profile2.name) {
-  console.log('true');
-  return true;
-} else if (profile1.age == profile2.age) {
-  console.log('true');
-  return true;
-} else {
-  console.log('false');
-  return false;
-};
+// console.log(pair1('Jake', 25));
+// console.log(pair2('Brad', 22))
+// //console.log(profile1.name)
 
 
+// if (profile1.name == profile2.name) {
+//   console.log('true');
+//   return true;
+// } else if (profile1.age == profile2.age) {
+//   console.log('true');
+//   return true;
+// } else {
+//   console.log('false');
+//   return false;
+// };
+
+//RELEASE 1 SECOND ATTEMPT
+//compare keys of each input hash
+//if hashes have same keys compare the value
+//if the values are the same, return true
+//otherwise return false
+
+function profileAdder(profile1, profile2) {
+  for (var key in profile1){
+    if(Object.keys(profile2).includes(key)){
+        if(profile2[key] == profile1[key]){
+          var match = true;
+
+        } else {
+          var match = true ;
+        }
+    } else {
+      var match = false;
+    };
+
+  }
+    console.log(match)
+    return match
+}
+
+profileAdder({name: "Steven", age: 24}, {name: "Tamir", age: 54}) //true
+profileAdder({nam: "Steven", ag: 24}, {name: "Tamir", age: 54}) //false (no e in name)
 
 
 
