@@ -1,0 +1,94 @@
+databases (database) :> sqlite3 water_animals.db 
+SQLite version 3.8.10.2 2015-05-20 18:17:19
+Enter ".help" for usage hints.
+sqlite> SELECT * FROM animals, class WHERE animals.class_id = class.id;
+1|snake|3|true|1|1|reptile
+2|turtle|5|false|1|1|reptile
+3|crocodile|150|true|1|1|reptile
+4|frog|4|false|2|2|amphibean
+5|salamander|1|false|2|2|amphibean
+
+databases (database) :> sqlite3 water_animals.db 
+SQLite version 3.8.10.2 2015-05-20 18:17:19
+Enter ".help" for usage hints.
+sqlite> SELECT * FROM animals, class WHERE animals.class_id = class.id;
+1|snake|3|true|1|1|reptile
+2|turtle|5|false|1|1|reptile
+3|crocodile|150|true|1|1|reptile
+4|frog|4|false|2|2|amphibean
+5|salamander|1|false|2|2|amphibean
+sqlite> SELECT animals.name, class.name FROM animals JOIN class ON animals.class_id = class.id;
+snake|reptile
+turtle|reptile
+crocodile|reptile
+frog|amphibean
+salamander|amphibean
+
+sqlite> SELECT class.name, animals.name FROM class JOIN animals ON class.id = animals.class_id;
+reptile|snake
+reptile|turtle
+reptile|crocodile
+amphibean|frog
+amphibean|salamander
+
+sqlite> SELECT * FROM animals;
+1|snake|3|true|1
+2|turtle|5|false|1
+3|crocodile|150|true|1
+4|frog|4|false|2
+5|salamander|1|false|2
+
+sqlite> UPDATE animals SET avg_weight=200 WHERE name="crocodile"; 
+sqlite> SELECT avg_weight FROM animals;
+3
+5
+200
+4
+1
+sqlite>  SELECT * FROM animals;
+1|snake|3|true|1
+2|turtle|5|false|1
+3|crocodile|200|true|1
+4|frog|4|false|2
+5|salamander|1|false|2
+
+sqlite> DELETE FROM animals WHERE (avg_weight < 2);
+sqlite> SELECT * FROM animals;
+1|snake|3|true|1
+2|turtle|5|false|1
+3|crocodile|200|true|1
+4|frog|4|false|2
+
+sqlite> SELECT name, avg_weight, dangerous FROM animals CROSS JOIN class;
+Error: ambiguous column name: name
+sqlite> SELECT animals.name, avg_weight, dangerous FROM animals CROSS JOIN class;
+snake|3|true
+snake|3|true
+turtle|5|false
+turtle|5|false
+crocodile|200|true
+crocodile|200|true
+frog|4|false
+frog|4|false
+
+sqlite> SELECT animals.name, avg_weight, dangerous FROM animals INNER JOIN class ON animals.class_id = class.id;
+snake|3|true
+turtle|5|false
+crocodile|200|true
+frog|4|false
+
+sqlite> SELECT class.name, avg_weight, dangerous FROM animals INNER JOIN class ON animals.class_id = class.id;
+reptile|3|true
+reptile|5|false
+reptile|200|true
+amphibean|4|false
+
+sqlite> SELECT class.name, avg_weight, dangerous FROM animals CROSS 
+reptile|3|true
+amphibean|3|true
+reptile|5|false
+amphibean|5|false
+reptile|200|true
+amphibean|200|true
+reptile|4|false
+amphibean|4|false
