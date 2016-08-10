@@ -1,0 +1,71 @@
+SELECT *
+FROM users
+JOIN reviews ON users.id = reviews.user_id
+JOIN businesses ON businesses.id = reviews.business_id;
+
+OUTPUT:
+2|Mandy|Kaling|1|5|Good Food|6|2|6|Sushi World
+5|Holly|Berry|2|1|Filthy Establishment|4|5|4|Lotus Yoga
+7|Denzel|George|3|3|Good instructor|5|7|5|Plumbing by Janet
+
+---
+SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment
+FROM reviews
+JOIN users ON reviews.user_id=users.id
+JOIN businesses ON businesses.id=reviews.business_id;
+
+OUTPUT:
+Mandy|Kaling|Sushi World|5|Good Food
+Holly|Berry|Lotus Yoga|1|Filthy Establishment
+Denzel|George|Plumbing by Janet|3|Good instructor
+
+---
+SELECT  businesses.name, users.first_name, users.last_name, reviews.stars, reviews.comment
+FROM reviews
+JOIN users ON reviews.user_id=users.id
+JOIN businesses ON businesses.id=reviews.business_id;
+
+OUTPUT:
+Sushi World|Mandy|Kaling|5|Good Food
+Lotus Yoga|Holly|Berry|1|Filthy Establishment
+Plumbing by Janet|Denzel|George|3|Good instructor
+
+---
+SELECT *
+FROM businesses.name
+JOIN reviews ON reviews.business_id=businesses.id
+JOIN users ON users.id=reviews.user_id; 
+
+OUTPUT:
+6|Sushi World|1|5|Good Food|6|2|2|Mandy|Kaling
+4|Lotus Yoga|2|1|Filthy Establishment|4|5|5|Holly|Berry
+5|Plumbing by Janet|3|3|Good instructor|5|7|7|Denzel|George
+
+
+---
+SELECT *
+FROM reviews
+JOIN businesses ON businesses.id=reviews.business_id
+JOIN users ON reviews.user_id=users.id
+WHERE businesses.id=5;
+
+OUTPUT:
+3|3|Good instructor|5|7|5|Plumbing by Janet|7|Denzel|George
+
+(INPUT ADDITIONAL REVIEW FOR BUISNESS 5)
+3|3|Good instructor|5|7|5|Plumbing by Janet|7|Denzel|George
+4|4|Awesome!|5|2|5|Plumbing by Janet|2|Mandy|Kaling
+
+---
+SELECT businesses.name, users.first_name, users.last_name, reviews.stars, reviews.comment
+FROM reviews
+JOIN businesses ON businesses.id=reviews.business_id
+JOIN users ON reviews.user_id=users.id
+WHERE businesses.id=5;
+
+OUTPUT:
+Plumbing by Janet|Denzel|George|3|Good instructor
+Plumbing by Janet|Mandy|Kaling|4|Awesome!
+
+
+
