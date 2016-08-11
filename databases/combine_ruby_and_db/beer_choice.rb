@@ -80,12 +80,17 @@ else
   end
 end
 
+answer = 'y'
+until answer == 'n' do
 puts "\nWould you like to learn about a particular beer? (y/n)"
 answer= gets.chomp.downcase
-if answer == 'y'
-  learn_beers(initial_beers)
-else
-  "Ok, maybe next time!"
+  if answer == 'y'
+    puts "\nGreat! Here's a list of choices."
+    puts initial_beers.keys
+    puts "Which beer would you like to learn about?"
+    learn_about = gets.chomp
+    puts "#{initial_beers[learn_about]}."
+  end
 end
 
 
