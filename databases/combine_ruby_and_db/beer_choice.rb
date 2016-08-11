@@ -59,9 +59,9 @@ end
 def save_favorite(db, name, favorite)
 end
 
-
-
-
+def learn_beers(initial_beers)
+  puts initial_beers.keys
+end
 
 
 #-------USER INTERFACE-------------
@@ -82,11 +82,29 @@ end
 
 puts "\nWould you like to learn about a particular beer? (y/n)"
 answer= gets.chomp.downcase
-
 if answer == 'y'
-  puts "\n"
-  puts "\nGreat! Here's a list of choices."
-  puts "\n"
-  puts initial_beers.keys
+  learn_beers(initial_beers)
+else
+  "Ok, maybe next time!"
 end
+
+
+
+# if answer == 'y'
+#   puts "\n"
+#   puts "\nGreat! Here's a list of choices."
+#   puts "\n"
+#   puts initial_beers.keys
+#   puts "\n"
+#   puts "Which beer would you like to learn about?"
+#   learn_about = gets.chomp
+#   puts "#{initial_beers[learn_about]}."
+#   puts "Would you like to learn about another beer? (y/n)"
+#   another = gets.chomp.downcase
+#     if another = 'y'
+# else
+#   puts "Ok, maybe next time."
+# end
+
+
 
