@@ -8,6 +8,25 @@ create_table_cmd = <<-SQL
     name VARCHAR(255)
   )
 SQL
+
+create_table_cmd = <<-SQL
+  CREATE TABLE IF NOT EXISTS beers (
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(255),
+    profile VARCHAR(255),
+    alc_percent INT
+  )
+SQL
+
+create_table_cmd = <<-SQL
+  CREATE TABLE IF NOT EXISTS favorites (
+    id INTEGER PRIMARY KEY,
+    user_id INT,
+    beer_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (beer_id) REFERENCES beers(id)
+  )
+SQL
 db.execute(create_table_cmd)
 
 #CREATE A TEST USER
@@ -19,13 +38,18 @@ def create_user(db, name)
 end
 
 
-#create_user(db, "Brad")
-puts "Please select your name or type new."
-startup = gets.chomp
+puts "Please type your name."
+user_name = gets.chomp.capitalize
 #p db.execute("SELECT name from users")
 
-if db.execute("SELECT name from users").join(' ').include?(startup)
-  puts "You're already in our system!"
+if db.execute("SELECT name from users").join(' ').include?(user_name)
+  puts "You're already in our system, Let's get started!"
 else
-  puts "We'll have to add you."
+  puts "Hmm, I don't see you, lets add to our system."
+  create_user(db, user_name)
+  if db.execute("SELECT name from users").join(' ').include?(user_name)
+    puts "YAY, it worked!"
+  else
+    puts "Hmm, something went wrong..."
+  end
 end
