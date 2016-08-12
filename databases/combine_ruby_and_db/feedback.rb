@@ -14,7 +14,7 @@ db.execute(create_table_cmd)
 create_table_cmd = <<-SQL
   CREATE TABLE IF NOT EXISTS reviews (
     id INTEGERY PRIMARY KEY,
-    day VARCHAR(255),
+    review_date DATETIME default current_timestamp,
     comment VARCHAR(255),
     reviewed_user_id INT,
     reviewing_user_id INT,
@@ -30,9 +30,9 @@ db.execute(create_table_cmd)
 #puts users
 
 #add a test review
-#db.execute("INSERT INTO reviews(day, comment, user_id) VALUES ('8/12/2016', 'Jake helped me with my coding!', 1)")
-#reviews = db.execute("SELECT * FROM reviews")
-#puts reviews
+# db.execute("INSERT INTO reviews(comment, reviewed_user_id, reviewing_user_id) VALUES ('Brad helped me with my cooking all day!', 2, 1)")
+# reviews = db.execute("SELECT * FROM reviews")
+# puts reviews
 
 def create_user(db, first_name, last_name)
   db.execute("INSERT INTO users (first_name, last_name) VALUES (?, ?)", [first_name, last_name])
@@ -43,8 +43,8 @@ end
 users = db.execute("SELECT * FROM users")
 #puts users
 
-def create_review(db, day, comment, reviewed_user_id, reviewing_user_id)
-  db.execute("INSERT INTO reviews (day, comment, reviewed_user_id, reviewing_user_id) VALUES (?, ?, ?, ?)", [day, comment, reviewed_user_id, reviewing_user_id])
+def create_review(db, review_date, comment, reviewed_user_id, reviewing_user_id)
+  db.execute("INSERT INTO reviews (comment, reviewed_user_id, reviewing_user_id) VALUES (?, ?, ?)", [comment, reviewed_user_id, reviewing_user_id])
 end
 
 # test create_review method
@@ -58,29 +58,45 @@ users.each do |id, first, last|
   puts "#{id} | #{first} #{last}"
 end
 
-puts "\nHello and welcome to reviews on demand! Are you currently a user? (y/n)"
-current_user = gets.chomp.downcase
+move_on = false
+until move_on == true do
+  puts "\nHello and welcome to reviews on demand! Are you currently a user? (y/n)"
+  current_user = gets.chomp.downcase
 
 #Determine if user, get id and/or create id
-if current_user == 'n' 
-  puts "Well, nice to meet you! What is your first name?"
-  first_name = gets.chomp.capitalize
-  puts "\nWhat is your last name?"
-  last_name = gets.chomp.capitalize
-  puts "\nGreat, I'm adding you to our system!"
-  create_user(db, first_name, last_name)
-elsif current_user == 'y'
-  puts "\nGreat! Let's get started!"
-else
-  puts "Let's try that again."
+
+  if current_user == 'n' 
+    puts "Well, nice to meet you! What is your first name?"
+    first_name = gets.chomp.capitalize
+    puts "\nWhat is your last name?"
+    last_name = gets.chomp.capitalize
+    puts "\nGreat, I'm adding you to our system!"
+    create_user(db, first_name, last_name)
+    move_on = true
+  elsif current_user == 'y'
+    puts "\nGreat! Let's get started!"
+    move_on = true
+  else
+    puts "Let's try that again."
+    move_on = false
+  end
 end
 
 users.each do |id, first, last|
   puts "#{id} | #{first} #{last}"
 end
 
-puts "\nWhat is your user id?"
-user_id = gets.chomp.to_i
+user_id_array = []
+users.each do |id, first, last|
+  user_id_array << id
+end
+
+user_id = 'SB'
+until user_id_array.include?(user_id) do
+  puts "\nWhat is your user id?"
+  user_id = gets.chomp.to_i
+end
+
 
 option = 5
 until option == 4 do
@@ -92,21 +108,20 @@ until option == 4 do
   option = gets.chomp.to_i
 
   if option == 1
-    reviews_of_me = db.execute("SELECT reviews.day, reviews.comment, reviewing_user_id FROM reviews WHERE reviews.reviewed_user_id = #{user_id}")
+    reviews_of_me = db.execute("SELECT reviews.review_date, reviews.comment, reviewing_user_id FROM reviews WHERE reviews.reviewed_user_id = #{user_id}")
     puts "\n"
     puts reviews_of_me
   elsif option == 2
-    reviews_i_made = db.execute("SELECT reviews.day, reviews.comment, reviewing_user_id FROM reviews WHERE reviews.reviewing_user_id = #{user_id}")
+    reviews_i_made = db.execute("SELECT reviews.review_date, reviews.comment, reviewing_user_id FROM reviews WHERE reviews.reviewing_user_id = #{user_id}")
     puts "\n"
     puts reviews_i_made
   elsif option == 3
-    puts "\nWhat is today's date? (MM/DD/YYYY)"
-    day = gets.chomp
     puts "\nWhat is the user id of the person you would like to give feedback to (you may only review current users)?"
     reviewed_user_id = gets.chomp.to_i
     puts "\nEnter you comment here:"
     comment = gets.chomp
-    create_review(db, day, comment, reviewed_user_id, user_id)
+    review_date = ''
+    create_review(db, review_date, comment, reviewed_user_id, user_id)
     puts "\nThank you, your review has been entered! Please view reviews you have completed to view it (option 2)."
   end
 end
