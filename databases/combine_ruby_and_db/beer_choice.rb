@@ -87,7 +87,7 @@ answer= gets.chomp.downcase
   if answer == 'y'
     puts "\nGreat! Here's a list of choices."
     puts initial_beers.keys
-    puts "Which beer would you like to learn about?"
+    puts "Which beer would you like to learn about?\n"
     learn_about = gets.chomp
     puts "#{initial_beers[learn_about]}."
   end
