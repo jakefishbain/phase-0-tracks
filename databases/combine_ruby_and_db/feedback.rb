@@ -102,7 +102,7 @@ until option == 4 do
   elsif option == 3
     puts "\nWhat is today's date? (MM/DD/YYYY)"
     day = gets.chomp
-    puts "\nWhat is the user id of the person you would like to give feedback to?"
+    puts "\nWhat is the user id of the person you would like to give feedback to (you may only review current users)?"
     reviewed_user_id = gets.chomp.to_i
     puts "\nEnter you comment here:"
     comment = gets.chomp
@@ -110,9 +110,6 @@ until option == 4 do
     puts "\nThank you, your review has been entered! Please view reviews you have completed to view it (option 2)."
   end
 end
-
-#puts reviews
-#Would you like to create a review?
 
 
 
