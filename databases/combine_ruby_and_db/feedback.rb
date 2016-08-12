@@ -37,6 +37,16 @@ def create_user(db, first_name, last_name)
   db.execute("INSERT INTO users (first_name, last_name) VALUES (?, ?)", [first_name, last_name])
 end
 
-create_user(db, "Brad", "Greenspan")
+# test create_user method
+# create_user(db, "Brad", "Greenspan")
 users = db.execute("SELECT * FROM users")
 puts users
+
+def create_review(db, day, comment, user_id)
+  db.execute("INSERT INTO reviews (day, comment, user_id) VALUES (?, ?, ?)", [day, comment, user_id])
+end
+
+# test create_review method
+create_review(db, '8/12/2016', 'Brad was awesome!', 2)
+reviews = db.execute("SELECT * FROM reviews")
+puts reviews
