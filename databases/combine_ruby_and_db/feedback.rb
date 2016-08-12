@@ -58,21 +58,28 @@ users.each do |id, first, last|
   puts "#{id} | #{first} #{last}"
 end
 
-puts "\nHello and welcome to reviews on demand! Are you currently a user? (y/n)"
-current_user = gets.chomp.downcase
+move_on = false
+until move_on == true do
+  puts "\nHello and welcome to reviews on demand! Are you currently a user? (y/n)"
+  current_user = gets.chomp.downcase
 
 #Determine if user, get id and/or create id
-if current_user == 'n' 
-  puts "Well, nice to meet you! What is your first name?"
-  first_name = gets.chomp.capitalize
-  puts "\nWhat is your last name?"
-  last_name = gets.chomp.capitalize
-  puts "\nGreat, I'm adding you to our system!"
-  create_user(db, first_name, last_name)
-elsif current_user == 'y'
-  puts "\nGreat! Let's get started!"
-else
-  puts "Let's try that again."
+
+  if current_user == 'n' 
+    puts "Well, nice to meet you! What is your first name?"
+    first_name = gets.chomp.capitalize
+    puts "\nWhat is your last name?"
+    last_name = gets.chomp.capitalize
+    puts "\nGreat, I'm adding you to our system!"
+    create_user(db, first_name, last_name)
+    move_on = true
+  elsif current_user == 'y'
+    puts "\nGreat! Let's get started!"
+    move_on = true
+  else
+    puts "Let's try that again."
+    move_on = false
+  end
 end
 
 users.each do |id, first, last|
