@@ -86,8 +86,17 @@ users.each do |id, first, last|
   puts "#{id} | #{first} #{last}"
 end
 
-puts "\nWhat is your user id?"
-user_id = gets.chomp.to_i
+user_id_array = []
+users.each do |id, first, last|
+  user_id_array << id
+end
+
+user_id = 'SB'
+until user_id_array.include?(user_id) do
+  puts "\nWhat is your user id?"
+  user_id = gets.chomp.to_i
+end
+
 
 option = 5
 until option == 4 do
