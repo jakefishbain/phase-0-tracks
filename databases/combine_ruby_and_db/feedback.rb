@@ -92,16 +92,26 @@ until option == 4 do
   option = gets.chomp.to_i
 
   if option == 1
-    info = db.execute("SELECT reviews.day, reviews.comment, reviewing_user_id FROM reviews WHERE reviews.reviewed_user_id = #{user_id}")
+    reviews_of_me = db.execute("SELECT reviews.day, reviews.comment, reviewing_user_id FROM reviews WHERE reviews.reviewed_user_id = #{user_id}")
     puts "\n"
-    puts info
+    puts reviews_of_me
   elsif option == 2
-
+    reviews_i_made = db.execute("SELECT reviews.day, reviews.comment, reviewing_user_id FROM reviews WHERE reviews.reviewing_user_id = #{user_id}")
+    puts "\n"
+    puts reviews_i_made
   elsif option == 3
-
+    puts "\nWhat is today's date? (MM/DD/YYYY)"
+    day = gets.chomp
+    puts "\nWhat is the user id of the person you would like to give feedback to?"
+    reviewed_user_id = gets.chomp.to_i
+    puts "\nEnter you comment here:"
+    comment = gets.chomp
+    create_review(db, day, comment, reviewed_user_id, user_id)
+    puts "\nThank you, your review has been entered! Please view reviews you have completed to view it (option 2)."
   end
 end
 
+#puts reviews
 #Would you like to create a review?
 
 
