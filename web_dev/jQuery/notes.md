@@ -2,7 +2,6 @@
 
 * Utilize videos and readings to grasp jQuery concepts
   * [CodeAcademy](https://www.codecademy.com/pro/dashboard/path/jquery)
-  * Treehouse (not available until Sept. 2016)
   * [TutorialsPoint](http://www.tutorialspoint.com/jquery/)
   * [W3 Schools](http://www.w3schools.com/jquery/jquery_intro.asp)
 
@@ -18,7 +17,10 @@
 * Record notes here:
   * The purpose of jQuery is to make it much easier to use JavaScript on your website.
   * jQuery can be installed locally or as a script in the head of an HTML doc
-  *
 
 * Record questions here:
-  *
+  * Which functions might you use not at 'document.ready'?
+
+
+##### I found this plan to be difficult to follow, as I entered a number of rabbit-holes in researching and took a bit more time to figure out fading, hovering, etc...
+##### I plan on continuing to explore jQuery with my pair tomorrow...
