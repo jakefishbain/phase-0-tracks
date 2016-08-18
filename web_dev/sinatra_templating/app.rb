@@ -20,6 +20,9 @@ end
 get '/search_students' do
   erb :search_student
 end
+#form asking for age and received as a string
+#this string then POSTS to /find_students route (not page) through the search_student.erb
+
 
 
 # create new students via
@@ -34,12 +37,19 @@ post '/find_students' do
   age = params['age'].to_i
   redirect "/search_results/#{age}"
 end
+#converts age from /search_students to int
+#submits a route parameter of the age to /search_results
+#(this route will never appear to the user)
+
 
 get '/search_results/:age' do 
   age = params[:age].to_i
   @students = db.execute("SELECT * FROM students WHERE age=?", [age])
   erb :search_results
 end
+#takes age parameter and selects results from students db using each loop in erb file to print
+
+
 
 # add static resources
 
