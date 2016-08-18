@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <h1>Welcome to the Beer List!</h1>
+  <p>Click <a href="beers/new">here</a> to add a beer</p>
+
+  <ul>
+    <% @beers.each do |beer| %>
+      <li> <%= beer['name'] %>, <%= beer['brewery'] %>, <%= beer['alc_percentage'] %> </li>
+    <% end %>
+  </ul>
+</body>
+</html>
