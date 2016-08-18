@@ -3,7 +3,7 @@ require 'sinatra'
 require 'sqlite3'
 
 db = SQLite3::Database.new("students.db")
-db.results_as_hash = true
+#db.results_as_hash = true
 
 # write a basic GET route
 # add a query parameter
@@ -74,7 +74,12 @@ get '/add/:num1/:num2' do
 end
 
 
+# Make a route that allows the user to search the database in some way -- maybe for students who have a certain first name, or some other attribute. If you like, you can simply modify the home page to take a query parameter, and filter the students displayed if a query parameter is present.
 
+get '/search_age/:age' do
+  students_older = db.execute("SELECT name FROM students WHERE age > ?", [params[:age]])
+  students_older.to_s
+end
 
 
 
